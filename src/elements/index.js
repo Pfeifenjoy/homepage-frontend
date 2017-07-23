@@ -1,6 +1,6 @@
 //@flow
 
-export { 
+export {
 	default as Header,
 	Image as HeaderImage,
 	Name as HeaderName

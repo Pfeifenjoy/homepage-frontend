@@ -5,7 +5,6 @@ import Component from "inferno-component"
 
 import styled from "styled-components"
 import { P } from "./text"
-import Section from "./section"
 
 const height = 200
 const width = 200
@@ -133,8 +132,8 @@ export default class Project extends Component {
 	}
 
 	render() {
-		const { href, img, title, description } = this.props;
-		const { hover } = this.state;
+		const { href, img, title, description } = this.props
+		const { hover } = this.state
 		return <Wrapper
 					title={ title }
 					href={ href }

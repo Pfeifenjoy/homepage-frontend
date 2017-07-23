@@ -13,9 +13,8 @@ const Wrapper = styled.a`
 	margin: 5px;
 `
 
-export default (props: { icon?: Icon, label: Label, href: string }) => 
+export default (props: { icon?: Icon, label: Label, href: string }) =>
 	<Wrapper href={ props.href }>
 		{ props.icon }
 		<Label>{ props.label }</Label>
 	</Wrapper>
-
