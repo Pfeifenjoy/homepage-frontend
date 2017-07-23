@@ -3,9 +3,6 @@ const webpack = require("webpack")
 
 
 const baseConfig = {
-	entry: {
-		index: path.resolve("src/index.js")
-	},
 	output: {
 		path: path.resolve(__dirname, "./build"),
 		filename: "[name].bundle.js",
@@ -17,7 +14,6 @@ const baseConfig = {
 			"react-dom": "inferno-compat"
 		}
 	},
-	devtool: "source-map",
 	module: {
 		rules: [
 			{
@@ -50,15 +46,44 @@ const baseConfig = {
 				]
 			}
 		]
-	},
-	plugins: [
-		new webpack.HotModuleReplacementPlugin(),
-	]
+	}
 }
 
-const productionConfig = () => baseConfig
 
-const developmentConfig = () => Object.assign({ }, baseConfig, {
+// targets
+const runtime = () => Object.assign({ }, baseConfig, {
+	entry: {
+		runtime: path.resolve("src/runtime.js")
+	},
+	output: {
+		path: path.resolve("build/static"),
+		filename: "[name].bundle.js",
+		sourceMapFilename: "[file].map"
+	}
+})
+
+const index = () => Object.assign({ }, baseConfig, {
+	target: "node",
+	entry: {
+		index: path.resolve("src/index.js")
+	},
+	output: {
+		path: path.resolve("build"),
+		filename: "homepage.js",
+		sourceMapFilename: "homepage.map",
+		library: "homepage",
+		libraryTarget: "umd"
+	}
+})
+
+// decorators
+const production = config => Object.assign({ }, config(), {
+	plugins: [
+		new webpack.optimize.UglifyJsPlugin
+	]
+})
+
+const development = config => Object.assign({ }, config(), {
 	devServer: {
 		historyApiFallback: true,
 		stats: 'errors-only',
@@ -69,13 +94,17 @@ const developmentConfig = () => Object.assign({ }, baseConfig, {
 		overlay: true,
 		hot: true,
 		contentBase: path.resolve(__dirname, "build")
-	}
+	},
+	devtool: "source-map",
+	plugins: [
+		new webpack.HotModuleReplacementPlugin(),
+	]
 })
 
 module.exports = env => {
 	if (env === 'production') {
-		return productionConfig();
+		return [production(runtime), production(index)]
 	}
 
-	return developmentConfig();
+	return development(runtime)
 }

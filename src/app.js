@@ -1,11 +1,10 @@
 //@flow
 import Inferno from "inferno"
-import { Header, Projects } from "../components"
-import { Body, Section } from "../elements"
+import { Header, Projects } from "./components"
+import { Body, Section } from "./elements"
 
 import { ThemeProvider } from "styled-components"
-import { Dark } from "../themes"
-
+import { Dark } from "./themes"
 
 export default () => <ThemeProvider theme={ Dark }>
 	<Body>

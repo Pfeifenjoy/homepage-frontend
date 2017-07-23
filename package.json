@@ -1,8 +1,8 @@
 {
-  "name": "chat-client",
-  "version": "1.0.0",
-  "description": "A simple fast chat client.",
-  "main": "index.js",
+  "name": "homepage",
+  "version": "0.0.1",
+  "description": "My Homepage",
+  "main": "build/homepage.js",
   "scripts": {
     "test": "npm run lint && npm run flow && npm run mocha",
     "start": "webpack-dev-server --env development",
@@ -12,10 +12,6 @@
     "flow": "flow",
     "lint": "eslint src",
     "prepublish": "in-publish && npm run clean && npm run test && npm run build || not-in-publish"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@metthub.de:chat-frontend"
   },
   "author": "Arwed Mett",
   "license": "MIT",
@@ -46,6 +42,7 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.23.0",
+    "express": "^4.15.3",
     "inferno": "^3.3.1",
     "inferno-compat": "^3.6.4",
     "inferno-router": "^3.3.1",
