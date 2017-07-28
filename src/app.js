@@ -6,13 +6,20 @@ import { Body, Section } from "./elements"
 import { ThemeProvider } from "styled-components"
 import { Dark } from "./themes"
 
-export default () => <ThemeProvider theme={ Dark }>
-	<Body>
-		<Header />
+//export default () => <ThemeProvider theme={ Dark }>
+//	<Body>
+//		<Header />
+//
+//
+//	</Body>
+//</ThemeProvider>
+//		<Section title="My Projects">
+//			<Projects />
+//		</Section>
 
-		<Section title="My Projects">
-			<Projects />
-		</Section>
-
-	</Body>
-</ThemeProvider>
+export default () => <Body>
+	<Header />
+	<Section title="My Projects">
+		<Projects />
+	</Section>
+</Body>

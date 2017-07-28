@@ -52,6 +52,7 @@ const baseConfig = {
 
 // targets
 const runtime = () => Object.assign({ }, baseConfig, {
+	target: "web",
 	entry: {
 		runtime: path.resolve("src/runtime.js")
 	},
@@ -73,13 +74,26 @@ const index = () => Object.assign({ }, baseConfig, {
 		sourceMapFilename: "homepage.map",
 		library: "homepage",
 		libraryTarget: "umd"
+	},
+	node: {
+		__dirname: false,
+		__filename: false,
 	}
 })
 
 // decorators
 const production = config => Object.assign({ }, config(), {
 	plugins: [
-		new webpack.optimize.UglifyJsPlugin
+		new webpack.DefinePlugin({
+			'process.env':{
+				'NODE_ENV': JSON.stringify('production')
+			}
+		}),
+		new webpack.optimize.UglifyJsPlugin({
+			compress:{
+				warnings: true
+			}
+		})
 	]
 })
 
@@ -103,7 +117,7 @@ const development = config => Object.assign({ }, config(), {
 
 module.exports = env => {
 	if (env === 'production') {
-		return [production(runtime), production(index)]
+		return [production(index), production(runtime)]
 	}
 
 	return development(runtime)
