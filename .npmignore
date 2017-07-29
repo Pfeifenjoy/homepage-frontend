@@ -1,6 +1,5 @@
 flow
 flow-typed
-src
 test
 .babelrc
 .editorconfig
@@ -8,4 +7,3 @@ test
 .flowconfig
 .tern-port
 .gitignore
-webpack.config.js
