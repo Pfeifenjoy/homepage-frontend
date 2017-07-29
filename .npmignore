@@ -1,7 +1,6 @@
 flow
 flow-typed
 test
-.babelrc
 .editorconfig
 .eslintrc.json
 .flowconfig
