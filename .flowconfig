@@ -2,7 +2,7 @@
 ./src/**/*.js
 
 [ignore]
-.*/styled-components/src/.*
+.*/node_modules/styled-components/.*
 .*/build/.*
 
 [libs]

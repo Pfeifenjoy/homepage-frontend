@@ -14,7 +14,8 @@
     "clean": "rm -rf build",
     "flow": "flow",
     "lint": "eslint src",
-    "prepublish": "in-publish && npm run clean && npm run test && npm run build || not-in-publish"
+    "prepublish": "in-publish && npm run clean && npm run test && npm run build || not-in-publish",
+	"postinstall": "npm run build"
   },
   "author": "Arwed Mett",
   "license": "MIT",

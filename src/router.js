@@ -1,5 +1,6 @@
 //@flow
 import express, { Router } from "express"
+import type { $Request, $Response } from "express"
 import Inferno from "inferno"
 import InfernoServer from "inferno-server"
 import { ServerStyleSheet } from "styled-components"
@@ -23,7 +24,7 @@ const indexPage = template({
 	style
 })
 
-router.get("/", (req, res) => {
+router.get("/", (req: $Request, res: $Response) => {
 	res.send(indexPage)
 })
 
