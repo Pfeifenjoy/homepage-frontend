@@ -1,9 +1,8 @@
 //@flow
 import express, { Router } from "express"
 import Inferno from "inferno"
-import InfernoServer from 'inferno-server'
-import { ServerStyleSheet } from 'styled-components'
-import styled from "styled-components"
+import InfernoServer from "inferno-server"
+import { ServerStyleSheet } from "styled-components"
 import App from "./app"
 import path from "path"
 import ejs from "ejs"
@@ -24,7 +23,7 @@ const indexPage = template({
 	style
 })
 
-router.get("/", (req, res, next) => {
+router.get("/", (req, res) => {
 	res.send(indexPage)
 })
 

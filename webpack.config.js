@@ -70,8 +70,8 @@ const index = () => Object.assign({ }, baseConfig, {
 	},
 	output: {
 		path: path.resolve("build"),
-		filename: "homepage.js",
-		sourceMapFilename: "homepage.map",
+		filename: "index.js",
+		sourceMapFilename: "index.map",
 		library: "homepage",
 		libraryTarget: "umd"
 	},

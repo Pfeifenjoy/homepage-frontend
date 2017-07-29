@@ -16,6 +16,7 @@ node_modules/styled-components/flow-typed/inline-style-prefixer_vx.x.x.js
 
 [options]
 module.name_mapper.extension='html' -> '<PROJECT_ROOT>/flow/stub/file-loader.js'
+module.name_mapper.extension='ejs' -> '<PROJECT_ROOT>/flow/stub/raw-loader.js'
 module.use_strict=true
 munge_underscores=true
 suppress_type=$FlowIssue

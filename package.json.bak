@@ -1,11 +1,8 @@
 {
-  "name": "@arwed/homepage",
+  "name": "homepage",
   "version": "0.0.1",
-  "description": "My personal homepage",
-  "main": "build/index.js",
-  "directories": {
-    "test": "test"
-  },
+  "description": "My Homepage",
+  "main": "build/homepage.js",
   "scripts": {
     "test": "npm run lint && npm run flow && npm run mocha",
     "start": "webpack-dev-server --env development",
