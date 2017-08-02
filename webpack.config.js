@@ -118,7 +118,7 @@ const development = config => Object.assign({ }, config(), {
 module.exports = env => {
 	if (env === 'production') {
 		return [production(index), production(runtime)]
+	} else {
+		return [development(index), development(runtime)]
 	}
-
-	return development(runtime)
 }

@@ -1,7 +1,7 @@
 //@flow
 
 import styled from "styled-components"
-import src from "./image.png"
+import src from "./image.jpg"
 
 export default styled.img.attrs({
 	src,

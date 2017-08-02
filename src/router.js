@@ -28,6 +28,8 @@ router.get("/", (req: $Request, res: $Response) => {
 	res.send(indexPage)
 })
 
-router.use(express.static(path.join(__dirname, "static")))
+router.use(express.static(path.join(__dirname, "static"), {
+	maxAge: 900000000
+}))
 
 export default router
