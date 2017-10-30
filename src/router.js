@@ -1,8 +1,8 @@
 //@flow
 import express, { Router } from "express"
 import type { $Request, $Response } from "express"
-import Inferno from "inferno"
-import InfernoServer from "inferno-server"
+import React from "react"
+import ReactServer from "react-server"
 import { ServerStyleSheet } from "styled-components"
 import App from "./app"
 import path from "path"
@@ -14,7 +14,7 @@ const router = new Router
 const sheet = new ServerStyleSheet()
 
 const template = ejs.compile(indexFile)
-const content = InfernoServer.renderToStaticMarkup(sheet.collectStyles(<App />))
+const content = ReactServer.renderToStaticMarkup(sheet.collectStyles(<App />))
 const title = "Arwed Mett"
 const style = sheet.getStyleTags()
 

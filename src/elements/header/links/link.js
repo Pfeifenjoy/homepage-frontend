@@ -1,6 +1,6 @@
 //@flow
 
-import Inferno from "inferno"
+import React from "react"
 import styled from "styled-components"
 import Label from "./label"
 import Icon from "./icon"

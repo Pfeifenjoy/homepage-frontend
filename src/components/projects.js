@@ -1,6 +1,6 @@
 //@flow
 
-import Inferno from "inferno"
+import React from "react"
 import { ProjectContainer, Project } from "../elements"
 
 export default () => <ProjectContainer

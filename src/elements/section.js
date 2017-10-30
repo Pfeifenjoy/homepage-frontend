@@ -1,6 +1,6 @@
 //@flow
 
-import Inferno from "inferno"
+import React from "react"
 import styled from "styled-components"
 import { H1 } from "./text"
 

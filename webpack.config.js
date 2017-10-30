@@ -8,12 +8,6 @@ const baseConfig = {
 		filename: "[name].bundle.js",
 		sourceMapFilename: "[file].map"
 	},
-	resolve: {
-		alias: {
-			"react": "inferno-compat",
-			"react-dom": "inferno-compat"
-		}
-	},
 	module: {
 		rules: [
 			{
@@ -107,7 +101,7 @@ const development = config => Object.assign({ }, config(), {
 		compress: true,
 		overlay: true,
 		hot: true,
-		contentBase: path.resolve(__dirname, "build")
+		contentBase: path.resolve(__dirname, "build/static")
 	},
 	devtool: "source-map",
 	plugins: [
@@ -119,6 +113,6 @@ module.exports = env => {
 	if (env === 'production') {
 		return [production(index), production(runtime)]
 	} else {
-		return [development(index), development(runtime)]
+		return [development(index)]
 	}
 }

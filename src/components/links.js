@@ -1,6 +1,6 @@
 //@flow
 
-import Inferno from "inferno"
+import React from "react"
 import { Container, Icon, Link } from "../elements/header/links"
 
 export default () => <Container>

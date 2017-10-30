@@ -1,7 +1,6 @@
 //@flow
 
-import Inferno from "inferno"
-import Component from "inferno-component"
+import React, { Component } from "react"
 
 import styled from "styled-components"
 import { P } from "./text"

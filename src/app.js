@@ -1,5 +1,5 @@
 //@flow
-import Inferno from "inferno"
+import React from "react"
 import { Header, Projects } from "./components"
 import { Body, Section } from "./elements"
 

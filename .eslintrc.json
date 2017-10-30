@@ -11,12 +11,12 @@
 		"node": true
 	},
 	"plugins": [
-		"inferno",
+		"react",
 		"flowtype"
 	],
 	"extends": [
 		"eslint:recommended",
-		"plugin:inferno/recommended",
+		"plugin:react/recommended",
 		"plugin:flowtype/recommended"
 	],
 	"rules": {
@@ -37,7 +37,8 @@
 		"indent": ["error", "tab"],
 		"no-trailing-spaces": "error",
 		"one-var": ["error", "never"],
-		"semi": ["error", "never"]
+		"semi": ["error", "never"],
+		"react/display-name": "off"
 	},
 	"globals": {
 		"document": true
