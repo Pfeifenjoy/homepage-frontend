@@ -44,6 +44,7 @@
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "ejs": "^2.5.7",
+    "history": "^4.7.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-fontawesome": "^1.6.1",
