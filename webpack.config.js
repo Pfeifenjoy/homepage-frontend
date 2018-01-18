@@ -1,5 +1,6 @@
 const path = require("path")
 const webpack = require("webpack")
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 
 const baseConfig = {
@@ -83,9 +84,11 @@ const production = config => Object.assign({ }, config(), {
 				'NODE_ENV': JSON.stringify('production')
 			}
 		}),
-		new webpack.optimize.UglifyJsPlugin({
-			compress:{
-				warnings: true
+		new UglifyJsPlugin({
+			uglifyOptions: {
+				compress:{
+					warnings: true
+				}
 			}
 		})
 	]
@@ -113,6 +116,6 @@ module.exports = env => {
 	if (env === 'production') {
 		return [production(index), production(runtime)]
 	} else {
-		return [development(index)]
+		return [development(runtime)]
 	}
 }
