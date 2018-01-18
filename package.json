@@ -7,10 +7,10 @@
     "test": "test"
   },
   "scripts": {
-    "test": "npm run lint && npm run flow && npm run mocha",
+    "test": "npm run flow && npm run mocha",
     "start": "webpack-dev-server --env development",
     "build": "webpack --env production",
-    "mocha": "mocha --compilers js:babel-register --timeout 100 --slow 30 --throw-deprecation --use_strict",
+    "mocha": "mocha --require babel-register --timeout 100 --slow 30 --throw-deprecation --use_strict",
     "clean": "rm -rf build",
     "flow": "flow",
     "lint": "eslint src",
@@ -25,6 +25,7 @@
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
     "babel-plugin-transform-flow-strip-types": "^6.22.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-flow": "^6.23.0",
     "babel-preset-latest": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "eslint": "^4.15.0",
@@ -32,8 +33,7 @@
     "eslint-plugin-react": "^7.5.1",
     "express": "^4.16.2",
     "file-loader": "^1.1.6",
-    "flow": "^0.2.3",
-    "flow-bin": "^0.59.0",
+    "flow-bin": "^0.63.1",
     "mocha": "^4.1.0",
     "raw-loader": "^0.5.1",
     "uglifyjs-webpack-plugin": "^1.1.6",
@@ -43,7 +43,6 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1",
     "ejs": "^2.5.7",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

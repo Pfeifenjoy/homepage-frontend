@@ -1,6 +1,7 @@
 //@flow
 
 import React from "react"
+import type { Node } from "react"
 import styled from "styled-components"
 import { H1 } from "./text"
 
@@ -17,7 +18,7 @@ const Style = styled.section`
 
 const Title = H1
 
-export default (props: { title: string, children?: Array<*> }) => <Style>
+export default (props: { title: string, children?: Node }) => <Style>
 	<Title>{ props.title }</Title>
 	<br />
 	<div>{ props.children }</div>

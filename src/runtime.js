@@ -18,4 +18,9 @@ const routes = <ThemeProvider theme={ Dark }>
 	</Router>
 </ThemeProvider>
 
-ReactDOM.render(routes, document.getElementById("content"))
+const target = document.getElementById("content")
+if(target instanceof Element) {
+	ReactDOM.render(routes, target)
+} else {
+	throw "Could not find content element to render content."
+}

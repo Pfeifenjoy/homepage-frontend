@@ -113,14 +113,18 @@ Navigation.defaultProps = {
 	}
 }
 
-export default class Project extends Component {
-	props: {
-		title: string,
-		description: string,
-		href: string,
-		img?: string
-	}
+type ProjectProps = {
+	title: string,
+	description: string,
+	href: string,
+	img?: string
+}
 
+type ProjectState = {
+	hover: boolean
+}
+
+export default class Project extends Component<ProjectProps, ProjectState> {
 	static defaultProps = {
 		description: "",
 		href: ""
