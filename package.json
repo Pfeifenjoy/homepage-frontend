@@ -43,6 +43,7 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
+    "babel-register": "^6.26.0",
     "ejs": "^2.5.7",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
