@@ -4,10 +4,10 @@ import "babel-polyfill"
 
 import React from "react"
 import ReactDOM from "react-dom"
-import { BrowserRouter, Route  } from "react-router-dom"
 import App from "./app"
 import { ThemeProvider } from "styled-components"
 import { Dark } from "./themes"
+import { BrowserRouter, Route  } from "react-router-dom"
 
 
 const routes = <ThemeProvider theme={ Dark }>
