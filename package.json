@@ -14,13 +14,11 @@
     "clean": "rm -rf build",
     "flow": "flow",
     "lint": "eslint src",
-    "prepack": "npm run clean && npm run test && npm run build"
+    "postinstall": "npm run clean && npm run test && npm run build"
   },
   "author": "Arwed Mett",
   "license": "MIT",
   "devDependencies": {
-  },
-  "dependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
@@ -42,7 +40,9 @@
     "url-loader": "^0.6.2",
     "webpack": "^3.10.0",
     "babel-register": "^6.26.0",
-    "webpack-dev-server": "^2.11.0",
+    "webpack-dev-server": "^2.11.0"
+  },
+  "dependencies": {
     "babel-polyfill": "^6.26.0",
     "ejs": "^2.5.7",
     "react": "^16.2.0",
