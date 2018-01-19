@@ -2,7 +2,7 @@
 import express, { Router } from "express"
 import type { $Request, $Response } from "express"
 import React from "react"
-import ReactServer from "react-server"
+import { renderToString } from "react-dom/server"
 import { ServerStyleSheet } from "styled-components"
 import App from "./app"
 import path from "path"
@@ -14,7 +14,7 @@ const router = new Router
 const sheet = new ServerStyleSheet()
 
 const template = ejs.compile(indexFile)
-const content = ReactServer.renderToStaticMarkup(sheet.collectStyles(<App />))
+const content = renderToString(sheet.collectStyles(<App />))
 const title = "Arwed Mett"
 const style = sheet.getStyleTags()
 

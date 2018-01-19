@@ -67,8 +67,8 @@ const index = () => Object.assign({ }, baseConfig, {
 		path: path.resolve("build"),
 		filename: "index.js",
 		sourceMapFilename: "index.map",
-		library: "homepage",
-		libraryTarget: "umd"
+		libraryTarget: "umd",
+		library: "homepage"
 	},
 	node: {
 		__dirname: false,
@@ -84,13 +84,13 @@ const production = config => Object.assign({ }, config(), {
 				'NODE_ENV': JSON.stringify('production')
 			}
 		}),
-		new UglifyJsPlugin({
-			uglifyOptions: {
-				compress:{
-					warnings: true
-				}
-			}
-		})
+		//new UglifyJsPlugin({
+		//	uglifyOptions: {
+		//		compress:{
+		//			warnings: true
+		//		}
+		//	}
+		//})
 	]
 })
 
