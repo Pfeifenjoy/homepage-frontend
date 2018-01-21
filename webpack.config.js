@@ -7,6 +7,7 @@ const baseConfig = {
 		filename: "[name].bundle.js",
 		sourceMapFilename: "[file].map"
 	},
+	externals: [ "express", "ejs" ],
 	module: {
 		rules: [
 			{

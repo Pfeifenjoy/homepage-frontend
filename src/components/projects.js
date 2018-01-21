@@ -3,9 +3,7 @@
 import React from "react"
 import { ProjectContainer, Project } from "../elements"
 
-export default () => <ProjectContainer
-	title="My Projects"
-	>
+export default () => <ProjectContainer>
 	<Project
 		title="Theseus"
 		href="https://github.com/Pfeifenjoy/Theseus"

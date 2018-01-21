@@ -8,6 +8,7 @@ import App from "./app"
 import path from "path"
 import ejs from "ejs"
 import indexFile from "raw-loader!./index.ejs"
+import fontawesome from "@fortawesome/fontawesome"
 
 const router = new Router
 
@@ -17,11 +18,13 @@ const template = ejs.compile(indexFile)
 const content = renderToString(sheet.collectStyles(<App />))
 const title = "Arwed Mett"
 const style = sheet.getStyleTags()
+const fontawesomecss = fontawesome.dom.css();
 
 const indexPage = template({
 	content,
 	title,
-	style
+	style,
+	fontawesomecss
 })
 
 router.get("/", (req: $Request, res: $Response) => {
