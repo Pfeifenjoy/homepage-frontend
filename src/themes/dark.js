@@ -1,8 +1,8 @@
 //@flow
 
 export default {
-	backgroundColor: "#111111",
+	backgroundcolor: "#111111",
 	fontFamily: "monospace",
-	textColor: "#FFFFFF",
+	textcolor: "#FFFFFF",
 	projectVisitedColor: "#BBBBBB"
 }

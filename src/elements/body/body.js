@@ -3,9 +3,9 @@
 import styled from "styled-components"
 
 export default styled.div.attrs({
-	backgroundColor: props => props.theme.backgroundColor || "#111111"
+	backgroundcolor: props => props.theme.backgroundcolor || "#111111"
 })`
-	background-color: ${ props => props.backgroundColor };
+	background-color: ${ props => props.backgroundcolor };
 	width: 100%;
 	min-height: 100%;
 	position: absolute;

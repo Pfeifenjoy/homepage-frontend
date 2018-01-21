@@ -2,21 +2,24 @@
 
 import React from "react"
 import { Container, Icon, Link } from "../elements/header/links"
+import faGithub from "@fortawesome/fontawesome-free-brands/faGithub"
+import faLinkedin from "@fortawesome/fontawesome-free-brands/faLinkedin"
+import faStackOverflow from "@fortawesome/fontawesome-free-brands/faStackOverflow"
 
 export default () => <Container>
 	<Link
-		icon={ <Icon name="github" /> }
-		label="github"
+		icon={ <Icon icon={ faGithub } /> }
+		label="Github"
 		href="https://github.com/Pfeifenjoy"
 		/>
 	<Link
-		icon={ <Icon name="linkedin" /> }
-		label="linkedin"
+		icon={ <Icon icon={ faLinkedin } /> }
+		label="Linkedin"
 		href="https://www.linkedin.com/in/arwed-mett-4b5784123/"
 		/>
 	<Link
-		icon={ <Icon name="stack-overflow" /> }
-		label="stack-overflow"
+		icon={ <Icon icon={ faStackOverflow } /> }
+		label="Stack Overflow"
 		href="https://stackoverflow.com/users/4399651/arwed-mett?tab=profile"
 		/>
 </Container>
