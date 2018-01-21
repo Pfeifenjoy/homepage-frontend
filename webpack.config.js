@@ -84,13 +84,13 @@ const production = config => Object.assign({ }, config(), {
 				'NODE_ENV': JSON.stringify('production')
 			}
 		}),
-		//new UglifyJsPlugin({
-		//	uglifyOptions: {
-		//		compress:{
-		//			warnings: true
-		//		}
-		//	}
-		//})
+		new UglifyJsPlugin({
+			uglifyOptions: {
+				compress:{
+					warnings: true
+				}
+			}
+		})
 	]
 })
 
