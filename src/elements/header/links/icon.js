@@ -5,5 +5,7 @@ import FontAwesome from "@fortawesome/react-fontawesome"
 
 export default styled(FontAwesome)`
 	color: ${ props => props.theme.textColor || "#FFFFFF" };
-	padding: 3px;
+	margin-right: 5px;
+	width: 12pt;
+	height: 12pt;
 `
