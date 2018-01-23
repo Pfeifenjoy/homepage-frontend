@@ -140,6 +140,7 @@ export default class Project extends Component<ProjectProps, ProjectState> {
 		return <Wrapper
 					title={ title }
 					href={ href }
+					target="_blank"
 					onMouseEnter={ () => this.setState({ hover: true }) }
 					onMouseLeave={ () => this.setState({ hover: false }) }
 					>

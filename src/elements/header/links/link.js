@@ -15,7 +15,9 @@ const Wrapper = styled.a`
 `
 
 export default (props: { icon?: Node, label: string, href: string }) =>
-	<Wrapper href={ props.href }>
+	<Wrapper
+		href={ props.href }
+		target="_blank">
 		{ props.icon }
 		<Label>{ props.label }</Label>
 	</Wrapper>
