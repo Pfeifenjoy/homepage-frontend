@@ -12,4 +12,5 @@ export default styled.div.attrs({
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	font-family: monospace;
 `
