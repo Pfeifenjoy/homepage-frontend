@@ -138,12 +138,12 @@ export default class Project extends Component<ProjectProps, ProjectState> {
 		const { href, img, title, description } = this.props
 		const { hover } = this.state
 		return <Wrapper
-					title={ title }
-					href={ href }
-					target="_blank"
-					onMouseEnter={ () => this.setState({ hover: true }) }
-					onMouseLeave={ () => this.setState({ hover: false }) }
-					>
+			title={ title }
+			href={ href }
+			target="_blank"
+			onMouseEnter={ () => this.setState({ hover: true }) }
+			onMouseLeave={ () => this.setState({ hover: false }) }
+		>
 			<BackgroundImage src={ img } background={ !hover && !!img } />
 			<Content background={ hover && !!img }>
 				<Title>{ title }</Title>

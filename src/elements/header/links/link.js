@@ -4,7 +4,6 @@ import React from "react"
 import type { Node } from "react"
 import styled from "styled-components"
 import Label from "./label"
-import Icon from "./icon"
 
 const Wrapper = styled.a`
 	color: ${ props => props.theme.textColor };

@@ -18,7 +18,7 @@ const template = ejs.compile(indexFile)
 const content = renderToString(sheet.collectStyles(<App />))
 const title = "Arwed Mett"
 const style = sheet.getStyleTags()
-const fontawesomecss = fontawesome.dom.css();
+const fontawesomecss = fontawesome.dom.css()
 
 const indexPage = template({
 	content,
