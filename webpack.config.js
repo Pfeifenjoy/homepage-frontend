@@ -38,6 +38,17 @@ const baseConfig = {
 						}
 					}
 				]
+			},
+			{
+				test: /.asc$/,
+				use: [
+					{
+						loader: "file-loader",
+						options: {
+							name: "[name].asc"
+						}
+					}
+				]
 			}
 		]
 	}
