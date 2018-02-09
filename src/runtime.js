@@ -6,15 +6,12 @@ import React from "react"
 import ReactDOM from "react-dom"
 import App from "./app"
 import { ThemeProvider } from "styled-components"
-import { Dark } from "./themes"
 import { BrowserRouter, Route  } from "react-router-dom"
 
 
-const routes = <ThemeProvider theme={ Dark }>
-	<BrowserRouter>
-		<Route exact component={ App } />
-	</BrowserRouter>
-</ThemeProvider>
+const routes = <BrowserRouter>
+	<Route exact component={ App } />
+</BrowserRouter>
 
 const target = document.getElementById("content")
 if(target instanceof Element) {

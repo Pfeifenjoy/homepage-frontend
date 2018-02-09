@@ -3,6 +3,6 @@
 export default {
 	backgroundcolor: "#111111",
 	fontFamily: "monospace",
-	textcolor: "#FFFFFF",
+	textColor: "#FFFFFF",
 	projectVisitedColor: "#BBBBBB"
 }
