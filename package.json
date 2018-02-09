@@ -15,7 +15,7 @@
     "clean": "rm -rf build",
     "flow": "flow",
     "lint": "eslint src",
-    "postinstall": "npm run clean && npm test && npm run build"
+    "postinstall": "npm run clean && npm run build"
   },
   "author": "Arwed Mett",
   "license": "MIT",
