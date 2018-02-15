@@ -22,3 +22,5 @@ export {
 export {
 	H1, H2, Title, P
 } from "./text"
+
+export { default as Content } from "./content"
