@@ -4,9 +4,6 @@ node_js:
     - "9.4.0"
     - "5.12.0"
 
-script:
-    - npm test
-
 branches:
   only:
-  - mastenpm test
+  - master
