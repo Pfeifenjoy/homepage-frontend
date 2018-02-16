@@ -1,6 +1,6 @@
 {
   "name": "@arwed/homepage",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "My personal homepage",
   "main": "build/index.js",
   "repository": "git@metthub.de:private/arwed/homepage-2",
