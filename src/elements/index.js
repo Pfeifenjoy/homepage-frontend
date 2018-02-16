@@ -6,13 +6,10 @@ export {
 	Name as HeaderName
 } from "./header"
 
-export {
-	Body
-} from "./body"
+export { Body } from "./body"
 
-export {
-	default as Section
-} from "./section"
+export { default as Section } from "./section"
+export type { SectionDescription } from "./section"
 
 export {
 	default as Project,
@@ -23,4 +20,5 @@ export {
 	H1, H2, Title, P
 } from "./text"
 
-export { default as Content } from "./content"
+export { default as content } from "./content"
+

@@ -102,7 +102,7 @@ const development = config => Object.assign({ }, config(), {
 		stats: 'errors-only',
 
 		host: process.env.HOST,
-		port: 3000,
+		port: 5000,
 		compress: true,
 		overlay: true,
 		hot: true,

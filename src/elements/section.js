@@ -18,8 +18,13 @@ const Style = styled.section`
 
 const Title = H1
 
-export default (props: { title: string, children?: Node }) => <Style>
-	<Title>{ props.title }</Title>
+export type SectionDescription = {
+	title: string,
+	body: () => Node
+}
+
+export default (props: { description: SectionDescription, hash: string }) => <Style>
+	<Title id={ props.hash || "" }>{ props.description.title }</Title>
 	<br />
-	<div>{ props.children }</div>
+	<div>{ props.description.body() }</div>
 </Style>
