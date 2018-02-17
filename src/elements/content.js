@@ -1,11 +1,11 @@
 //@flow
 
-import React, { Component } from "react"
+import React, { Component, Fragment } from "react"
 import type { Node } from "react"
 import { Section } from "."
 import type { SectionDescription } from "."
 import styled from "styled-components"
-import Observer from "@researchgate/react-intersection-observer"
+import Observer from "react-intersection-observer"
 
 const Link = styled.a`
 	text-decoration: inherit;
@@ -30,7 +30,8 @@ const Header = styled.header.attrs({
 	display: flex;
 	justify-content: left;
 	align-items: center;
-	width: 60%;
+	transition: 0.5s ease;
+	width: ${ props => props.stuck ? "100%" : "60%" };
 	z-index: 5;
 	margin: 20px auto;
 	min-height: 40px;
@@ -72,19 +73,30 @@ const generate_sections = (descriptions: Array<SectionDescription>) =>
 	descriptions.map(create_section)
 
 
-const Sentinel = styled.div`
-	width: 100%;
-	height: 1px;
-`
+class Top extends Component<{ stuck: bool }, { sections: Array<SectionDescription> }> {
 
-const test = () => alert("test")
+	state = {
+		stuck: false,
+	}
+
+	sentinel(in_view: bool) {
+		this.setState({ stuck: !in_view })
+	}
+
+	render() {
+		const { sections } = this.props
+		const { stuck } = this.state
+		return <Fragment>
+			<Observer onChange={ this.sentinel.bind(this) }>
+			</Observer>
+			<Header stuck={ stuck }>
+				{ generate_links(sections) }
+			</Header>
+		</Fragment>
+	}
+}
 
 export default (sections: Array<SectionDescription>) => <div>
-	<Observer onChange={ test } root="body" rootMargin="0% 0% 0% 0%">
-		<Sentinel />
-	</Observer>
-	<Header onWheel={ test }>
-		{ generate_links(sections) }
-	</Header>
+	<Top sections={ sections } />
 	{ generate_sections(sections) }
 </div>
