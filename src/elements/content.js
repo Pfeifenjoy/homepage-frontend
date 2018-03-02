@@ -73,10 +73,10 @@ const generate_sections = (descriptions: Array<SectionDescription>) =>
 	descriptions.map(create_section)
 
 
-class Top extends Component<{ stuck: bool }, { sections: Array<SectionDescription> }> {
+class Top extends Component<{ sections: Array<SectionDescription> }, { stuck: bool }> {
 
 	state = {
-		stuck: false,
+		stuck: false
 	}
 
 	sentinel(in_view: bool) {
@@ -96,7 +96,7 @@ class Top extends Component<{ stuck: bool }, { sections: Array<SectionDescriptio
 	}
 }
 
-export default (sections: Array<SectionDescription>) => <div>
+export default (sections: Array<SectionDescription>) => <Fragment>
 	<Top sections={ sections } />
 	{ generate_sections(sections) }
-</div>
+</Fragment>

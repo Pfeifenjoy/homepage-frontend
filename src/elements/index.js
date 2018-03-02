@@ -22,3 +22,4 @@ export {
 
 export { default as content } from "./content"
 
+export { default as Button } from "./button"

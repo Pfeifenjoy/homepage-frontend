@@ -1,5 +1,6 @@
 const path = require("path")
 const webpack = require("webpack")
+const WebpackNotifierPlugin = require("webpack-notifier")
 
 const baseConfig = {
 	output: {
@@ -111,6 +112,7 @@ const development = config => Object.assign({ }, config(), {
 	devtool: "source-map",
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(),
+        new WebpackNotifierPlugin()
 	]
 })
 
