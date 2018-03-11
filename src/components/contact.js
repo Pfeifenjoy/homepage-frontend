@@ -89,14 +89,16 @@ type ContactProps = { }
 type ContactState = {
 	name: string,
 	email: string,
-	message: string
+	message: string,
+	busy: boolean
 }
 
 export default class Contact extends Component<ContactProps, ContactState> {
 	state = {
 		name: "",
 		email: "",
-		message: ""
+		message: "",
+		busy: false
 	}
 
 	handleInput(name: string) {
@@ -121,6 +123,8 @@ export default class Contact extends Component<ContactProps, ContactState> {
 		//get data
 		const { name, email, message } = this.state
 
+		this.setState({ busy: true })
+
 		//validate data
 		if(!this.checkText(name)) {
 			//TODO
@@ -132,8 +136,6 @@ export default class Contact extends Component<ContactProps, ContactState> {
 			//TODO
 		}
 
-		//TODO set busy
-
 		//TODO send data
 		
 		//TODO handle response
@@ -143,12 +145,13 @@ export default class Contact extends Component<ContactProps, ContactState> {
 		this.setState({
 			name: "",
 			email: "",
-			message: ""
+			message: "",
+			busy: false
 		})
 	}
 
 	render() {
-		const { name, email, message } = this.state
+		const { name, email, message, busy } = this.state
 		return <Form
 			action="/contact"
 			method="post"
@@ -176,7 +179,7 @@ export default class Contact extends Component<ContactProps, ContactState> {
 				value={ message }
 				onChange={ this.handleInput("message").bind(this) }
 			/>
-			<Send busy={ true } type="submit">Send</Send>
+			<Send busy={ busy } type="submit">Send</Send>
 		</Form>
 	}
 }
