@@ -1,9 +1,9 @@
 {
-  "name": "@arwed/homepage",
+  "name": "@arwed/homepage-frontend",
   "version": "0.0.3",
   "description": "My personal homepage",
   "main": "build/index.js",
-  "repository": "git@metthub.de:private/arwed/homepage-2",
+  "repository": "git@github.de:Pfeifenjoy/homepage-frontend",
   "directories": {
     "test": "test"
   },
@@ -14,8 +14,7 @@
     "mocha": "mocha --require babel-register --timeout 100 --slow 30 --throw-deprecation --use_strict",
     "clean": "rm -rf build",
     "flow": "flow",
-    "lint": "eslint src",
-    "postinstall": "npm run clean && npm run build"
+    "lint": "eslint src"
   },
   "author": "Arwed Mett",
   "license": "MIT",
