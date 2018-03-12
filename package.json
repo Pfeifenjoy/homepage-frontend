@@ -14,18 +14,12 @@
     "mocha": "mocha --require babel-register --timeout 100 --slow 30 --throw-deprecation --use_strict",
     "clean": "rm -rf build",
     "flow": "flow",
-    "lint": "eslint src"
+    "lint": "eslint src",
+	"prepublishOnly": "npm run test && npm run build"
   },
   "author": "Arwed Mett",
   "license": "MIT",
   "devDependencies": {
-    "webpack-notifier": "^1.5.1"
-  },
-  "dependencies": {
-    "@fortawesome/fontawesome": "^1.1.4",
-    "@fortawesome/fontawesome-free-brands": "^5.0.7",
-    "@fortawesome/fontawesome-free-solid": "^5.0.7",
-    "@fortawesome/react-fontawesome": "0.0.17",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.2",
@@ -34,18 +28,27 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.26.0",
-    "ejs": "^2.5.7",
     "eslint": "^4.18.1",
     "eslint-plugin-flowtype": "^2.46.1",
     "eslint-plugin-react": "^7.7.0",
-    "express": "^4.16.2",
     "file-loader": "^1.1.10",
     "flow-bin": "^0.63.1",
-    "intersection-observer": "^0.5.0",
     "mocha": "^4.1.0",
     "raw-loader": "^0.5.1",
+    "url-loader": "^0.6.2",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.11.2",
+    "webpack-notifier": "^1.5.1"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome": "^1.1.4",
+    "@fortawesome/fontawesome-free-brands": "^5.0.7",
+    "@fortawesome/fontawesome-free-solid": "^5.0.7",
+    "@fortawesome/react-fontawesome": "0.0.17",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "intersection-observer": "^0.5.0",
     "react": "^16.2.0",
     "react-autosize-textarea": "^3.0.2",
     "react-dom": "^16.2.0",
@@ -53,9 +56,6 @@
     "react-intersection-observer": "^3.0.3",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
-    "styled-components": "^2.4.0",
-    "url-loader": "^0.6.2",
-    "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.11.2"
+    "styled-components": "^2.4.0"
   }
 }
