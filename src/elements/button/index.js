@@ -2,9 +2,12 @@
 
 import React, { Component, Fragment } from "react"
 import type { ElementProps, Node } from "react"
-import faCircle from "@fortawesome/fontawesome-free-solid/faCircleNotch"
-import FontAwesome from "@fortawesome/react-fontawesome"
+import { library } from "@fortawesome/fontawesome-svg-core"
+import { faCircle } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import styled, { keyframes } from "styled-components"
+
+library.add(faCircle)
 
 /************************************************************/
 /* Loader                                                   */
@@ -19,7 +22,7 @@ const LoaderKeyframes = keyframes`
 	}
 `
 
-const LoaderStyle = styled(FontAwesome)`
+const LoaderStyle = styled(FontAwesomeIcon)`
 	position: absolute;
 	display: block;
 	height: 90%;
@@ -31,7 +34,7 @@ const LoaderStyle = styled(FontAwesome)`
 	animation: ${ LoaderKeyframes } 2s linear infinite;
 `
 
-const Loader = () => <LoaderStyle icon={ faCircle } />
+const Loader = () => <LoaderStyle icon="circle" />
 
 /************************************************************/
 /* Button Style                                             */

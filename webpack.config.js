@@ -22,7 +22,7 @@ const baseConfig = {
 				test: /\.(png|jpg|gif)$/,
 				use: [
 					{
-						loader: 'url-loader',
+						loader: "url-loader",
 						options: {
 							limit: 8192
 						}
@@ -83,24 +83,25 @@ const index = () => Object.assign({ }, baseConfig, {
 	},
 	node: {
 		__dirname: false,
-		__filename: false,
+		__filename: false
 	}
 })
 
 // decorators
 const production = config => Object.assign({ }, config(), {
+	mode: "production",
 	plugins: [
 		new webpack.DefinePlugin({
-			"process.env.NODE_ENV": JSON.stringify('production')
-		}),
-		new webpack.optimize.UglifyJsPlugin()
+			"process.env.NODE_ENV": JSON.stringify("production")
+		})
 	]
 })
 
 const development = config => Object.assign({ }, config(), {
+	mode: "development",
 	devServer: {
 		historyApiFallback: true,
-		stats: 'errors-only',
+		stats: "errors-only",
 
 		host: process.env.HOST,
 		port: 5000,
@@ -112,14 +113,14 @@ const development = config => Object.assign({ }, config(), {
 	devtool: "source-map",
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(),
-        new WebpackNotifierPlugin()
+		new WebpackNotifierPlugin()
 	]
 })
 
 module.exports = env => {
-	if (env === 'production') {
-		return [production(index), production(runtime)]
+	if (env === "production") {
+		return [ production(index), production(runtime) ]
 	} else {
-		return [development(runtime)]
+		return [ development(runtime) ]
 	}
 }
