@@ -11,7 +11,7 @@
     "test": "npm run flow && npm run mocha",
     "start": "webpack-dev-server --env development",
     "build": "webpack --env production && flow-copy-source src build",
-    "mocha": "mocha --require babel-register --timeout 100 --slow 30 --throw-deprecation --use_strict",
+    "mocha": "mocha --require @babel/register --require babel-polyfill --slow 30 --throw-deprecation --use_strict",
     "clean": "rm -rf build",
     "flow": "flow",
     "lint": "eslint src",
