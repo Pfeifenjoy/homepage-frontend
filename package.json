@@ -3,6 +3,9 @@
   "version": "0.0.7",
   "description": "My personal homepage",
   "main": "build/index.js",
+  "files": [
+	  "build"
+	],
   "repository": "git@github.de:Pfeifenjoy/homepage-frontend",
   "directories": {
     "test": "test"
