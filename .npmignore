@@ -3,6 +3,7 @@ flow-typed
 test
 .editorconfig
 .eslintrc.json
-.flowconfig
 .tern-port
 .gitignore
+Vagrantfile
+webpack.config.js
