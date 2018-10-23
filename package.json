@@ -5,7 +5,8 @@
   "main": "build/index.js",
   "files": [
     "build",
-    ".flowconfig"
+    ".flowconfig",
+	"flow"
   ],
   "repository": "git@github.de:Pfeifenjoy/homepage-frontend",
   "directories": {
