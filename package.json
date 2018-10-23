@@ -1,12 +1,12 @@
 {
   "name": "@arwed/homepage-frontend",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "My personal homepage",
   "main": "build/index.js",
   "files": [
     "build",
     ".flowconfig",
-	"flow"
+    "flow"
   ],
   "repository": "git@github.de:Pfeifenjoy/homepage-frontend",
   "directories": {
