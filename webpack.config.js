@@ -24,7 +24,7 @@ const baseConfig = {
 					{
 						loader: "url-loader",
 						options: {
-							limit: 8192
+							limit: 1000
 						}
 					}
 				]
@@ -114,6 +114,7 @@ const development = config => Object.assign({ }, config(), {
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(),
 		new WebpackNotifierPlugin()
+
 	]
 })
 

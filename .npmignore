@@ -1,9 +1,0 @@
-flow
-flow-typed
-test
-.editorconfig
-.eslintrc.json
-.tern-port
-.gitignore
-Vagrantfile
-webpack.config.js

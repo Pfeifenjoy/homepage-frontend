@@ -4,7 +4,8 @@
   "description": "My personal homepage",
   "main": "build/index.js",
   "files": [
-    "build"
+    "build",
+	".flowconfig"
   ],
   "repository": "git@github.de:Pfeifenjoy/homepage-frontend",
   "directories": {
