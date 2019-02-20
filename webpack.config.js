@@ -102,13 +102,19 @@ const development = config => Object.assign({ }, config(), {
 	devServer: {
 		historyApiFallback: true,
 		stats: "errors-only",
-
 		host: process.env.HOST,
 		port: 5000,
 		compress: true,
 		overlay: true,
 		hot: true,
-		contentBase: path.resolve(__dirname, "build/static")
+		contentBase: path.resolve(__dirname, "build/static"),
+		https: true,
+		proxy: {
+			"/api": {
+				"target": "https://localhost:6000",
+				secure: false
+			}
+		}
 	},
 	devtool: "source-map",
 	plugins: [
