@@ -1,14 +1,18 @@
 //@flow
-import React, { Fragment, Component } from "react"
-import { Section, Button } from "../elements"
+import React, { Component } from "react"
+import { Button } from "../elements"
 import styled from "styled-components"
 import textarea from "react-autosize-textarea"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons"
+import { connect } from "react-redux"
+import { send_message } from "../action"
 
 /************************************************************/
 /* Styling                                                  */
 /************************************************************/
 
-const BaseInput = () => `
+const BaseInput = ({ validation }: { validation: boolean }) => `
 	border: none;
 	border-bottom: #888 solid;
 	padding: 5px;
@@ -19,6 +23,9 @@ const BaseInput = () => `
 
 	:focus {
 		border-bottom: white solid;
+	}
+	:invalid {
+		${ validation ? "border-bottom: red solid;" : "" }
 	}
 `
 const Input = styled.input`
@@ -35,7 +42,7 @@ const Email = styled(Input)`
 
 const Message = styled(textarea)`
 	${ BaseInput }
-	grid-area: message;
+	grid-area: text;
 	grid-column-end: span 2;
 	resize: vertical;
 	box-sizing: border-box;
@@ -59,14 +66,13 @@ const Send = styled(Button)`
 const Form = styled.form`
 	display: grid;
 	width: 100%;
-	max-width: 400px;
 
 	grid-template-columns: 1fr;
 	grid-template-rows: 1fr 1fr auto auto;
 	grid-template-areas:
 		"name"
 		"email"
-		"message"
+		"text"
 		"send";
 
 	grid-gap: 10px;
@@ -76,29 +82,85 @@ const Form = styled.form`
 		grid-template-rows: 1fr auto auto;
 		grid-template-areas:
 			"name email"
-			"message message"
+			"text text"
 			"send send";
 	}
+
+	margin-top: 10px;
+	margin-bottom: 10px;
+	max-width: 800px;
+	margin-left: auto;
+	margin-right: auto;
 `
+/************************************************************/
+/* Successfully send                                        */
+/************************************************************/
+
+const SendIcon = styled(FontAwesomeIcon)`
+	color: white;
+	min-width: 50px;
+	min-height: 50px;
+	margin: 10px;
+`
+const SendText = styled.div`
+	color: white;
+	font-size: 10pt;
+`
+
+const SendContainer = styled.div`
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	distplay: flex;
+	height: 250px;
+`
+const Success = () => <SendContainer>
+	<SendIcon icon={ faCheck } />
+	<SendText>Success</SendText>
+</SendContainer>
+
+/************************************************************/
+/* Failure send                                             */
+/************************************************************/
+const Fail = () => <SendContainer>
+	<SendIcon icon={ faTimes } />
+	<SendText>Unknown Failure</SendText>
+</SendContainer>
 
 /************************************************************/
 /* Contact Form Component                                   */
 /************************************************************/
 
-type ContactProps = { }
+type State = "IDLE" | "PENDING" | "FULFILLED" | "REJECTED"
+
+type ContactProps = { state: State, dispatch: Function }
+
 type ContactState = {
 	name: string,
 	email: string,
-	message: string,
-	busy: boolean
+	text: string,
+	validation: boolean
 }
 
-export default class Contact extends Component<ContactProps, ContactState> {
+/************************************************************/
+/* Container                                                */
+/************************************************************/
+
+const Container = styled.div`
+	 min-height: 250px;
+	 width: 100%;
+	 padding: 0;
+	 margin: 0;
+`
+
+export class Contact extends Component<ContactProps, ContactState> {
 	state = {
 		name: "",
 		email: "",
-		message: "",
-		busy: false
+		text: "",
+		validation: false
 	}
 
 	handleInput(name: string) {
@@ -110,76 +172,82 @@ export default class Contact extends Component<ContactProps, ContactState> {
 		}
 	}
 
-	checkText(text: string) {
-		return text.length > 0
+	activateValidation() {
+		this.setState({ validation: true })
 	}
 
-	checkEmail(email: string) {
-		return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)
-	}
-
-	handleSubmit(event: SyntheticInputEvent<HTMLButtonElement>) {
+	async handleSubmit(event: SyntheticInputEvent<HTMLButtonElement>) {
 		event.preventDefault()
-		//get data
-		const { name, email, message } = this.state
 
-		this.setState({ busy: true })
-
-		//validate data
-		if(!this.checkText(name)) {
-			//TODO
+		const { name, email, text } = this.state
+		await this.props.dispatch(send_message({ name, email, text }))
+		if(this.props.state === "FULFILLED") {
+			this.setState({ name: "", email: "", text: "" })
 		}
-		if(!this.checkEmail(email)) {
-			//TODO
-		}
-		if(!this.checkText(message)) {
-			//TODO
-		}
-
-		//TODO send data
-		
-		//TODO handle response
-		// - set new state (clear)
-		// - unset busy
-
-		this.setState({
-			name: "",
-			email: "",
-			message: "",
-			busy: false
-		})
 	}
 
 	render() {
-		const { name, email, message, busy } = this.state
-		return <Form
-			action="/contact"
-			method="post"
-			onSubmit={ this.handleSubmit.bind(this) }
-		>
-			<Name
-				placeholder="Your Name"
-				name="name"
-				type="text"
-				value={ name }
-				onChange={ this.handleInput("name").bind(this) }
-			/>
-			<Email
-				placeholder="Your Email"
-				name="email"
-				type="email"
-				value={ email }
-				onChange={ this.handleInput("email").bind(this) }
-			/>
-			<Message
-				rows={ 10 }
-				placeholder="Your Message"
-				name="message"
-				type="text"
-				value={ message }
-				onChange={ this.handleInput("message").bind(this) }
-			/>
-			<Send busy={ busy } type="submit">Send</Send>
-		</Form>
+		const { name, email, text, validation } = this.state
+		const { state } = this.props
+
+		let body
+		switch(state) {
+		case "PENDING":
+		case "IDLE":
+			body = <Form
+				action="/contact"
+				method="post"
+				onSubmit={ this.handleSubmit.bind(this) }
+			>
+				<Name
+					placeholder="Your Name"
+					name="name"
+					type="text"
+					required={ true }
+					value={ name }
+					onChange={ this.handleInput("name").bind(this) }
+					validation={ validation ? 1 : 0 }
+					disabled={ state === "PENDING" }
+				/>
+				<Email
+					placeholder="Your Email"
+					name="email"
+					type="email"
+					required={ true }
+					value={ email }
+					onChange={ this.handleInput("email").bind(this) }
+					validation={ validation ? 1 : 0 }
+					disabled={ state === "PENDING" }
+				/>
+				<Message
+					rows={ 10 }
+					placeholder="Your Message"
+					name="text"
+					type="text"
+					required={ true }
+					value={ text }
+					onChange={ this.handleInput("text").bind(this) }
+					validation={ validation ? 1 : 0 }
+					disabled={ state === "PENDING" }
+				/>
+				<Send
+					busy={ state === "PENDING" }
+					type="submit"
+					onClick={ this.activateValidation.bind(this) }
+				>
+					Send
+				</Send>
+			</Form>
+			break
+		case "FULFILLED":
+			body = <Success />
+			break
+		default:
+			body = <Fail />
+		}
+
+		return <Container>{ body }</Container>
 	}
 }
+
+export default connect(state => ({ state: state.message.state }))(Contact)
