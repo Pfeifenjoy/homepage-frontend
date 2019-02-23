@@ -13,12 +13,11 @@
     "test": "test"
   },
   "scripts": {
+    "start": "webpack-dev-server --env development",
     "test:flow": "flow --quiet",
     "test:lint": "eslint src",
     "test:mocha": "mocha --use_strict --require @babel/register --require babel-polyfill",
     "test": "npm run test:lint && npm run test:flow && npm run test:mocha",
-    "dev-server": "webpack-dev-server --env development",
-    "start": "nodemon --exec npm run babel-node",
     "babel-node": "npx babel-node src/local-instance.js --source-maps",
 	"build:webpack": "webpack --env production",
 	"build:flow": "flow-copy-source src build",
@@ -42,18 +41,15 @@
     "eslint-plugin-flowtype": "^2.46.1",
     "eslint-plugin-react": "^7.7.0",
     "file-loader": "^2.0.0",
-    "flow": "^0.2.3",
     "flow-bin": "^0.69.0",
     "flow-copy-source": "^2.0.2",
     "flow-typed": "^2.4.0",
     "mocha": "^5.1.0",
-    "nodemon": "^1.18.9",
     "raw-loader": "^0.5.1",
     "url-loader": "^1.1.2",
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.14",
-    "webpack-notifier": "^1.7.0"
+    "webpack-dev-server": "^3.1.14"
   },
   "dependencies": {
     "@babel/node": "^7.2.2",

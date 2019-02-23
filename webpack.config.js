@@ -1,6 +1,11 @@
 const path = require("path")
 const webpack = require("webpack")
-const WebpackNotifierPlugin = require("webpack-notifier")
+
+const port = parseInt(process.env.PORT) || 5000
+
+/************************************************************/
+/* Base configuration                                       */
+/************************************************************/
 
 const baseConfig = {
 	output: {
@@ -56,7 +61,11 @@ const baseConfig = {
 }
 
 
-// targets
+/************************************************************/
+/* Targets                                                  */
+/************************************************************/
+
+//This will be the script which is included in the index.html
 const runtime = () => Object.assign({ }, baseConfig, {
 	target: "web",
 	entry: {
@@ -69,6 +78,8 @@ const runtime = () => Object.assign({ }, baseConfig, {
 	}
 })
 
+//This target will be exposed by this package, that either node
+//or browser applications can require it.
 const index = () => Object.assign({ }, baseConfig, {
 	target: "node",
 	entry: {
@@ -87,7 +98,11 @@ const index = () => Object.assign({ }, baseConfig, {
 	}
 })
 
-// decorators
+/************************************************************/
+/* Decorators                                               */
+/************************************************************/
+
+//extend the configuration by all production settings
 const production = config => Object.assign({ }, config(), {
 	mode: "production",
 	plugins: [
@@ -97,18 +112,18 @@ const production = config => Object.assign({ }, config(), {
 	]
 })
 
+//extend the configuration by all development settings
 const development = config => Object.assign({ }, config(), {
 	mode: "development",
 	devServer: {
 		historyApiFallback: true,
 		stats: "errors-only",
 		host: process.env.HOST,
-		port: 5000,
+		port,
 		compress: true,
 		overlay: true,
 		hot: true,
 		contentBase: path.resolve(__dirname, "build/static"),
-		https: true,
 		proxy: {
 			"/api": {
 				"target": "https://localhost:6000",
@@ -118,12 +133,11 @@ const development = config => Object.assign({ }, config(), {
 	},
 	devtool: "source-map",
 	plugins: [
-		new webpack.HotModuleReplacementPlugin(),
-		new WebpackNotifierPlugin()
-
+		new webpack.HotModuleReplacementPlugin()
 	]
 })
 
+//choose according to environment
 module.exports = env => {
 	if (env === "production") {
 		return [ production(index), production(runtime) ]
