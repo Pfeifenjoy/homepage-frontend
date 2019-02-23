@@ -5,7 +5,7 @@ import { Container, Icon, Link } from "../elements/header/links"
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { faKey } from "@fortawesome/free-solid-svg-icons"
 import { faGithub, faLinkedin, faStackOverflow } from "@fortawesome/free-brands-svg-icons"
-import pubKey from "../../resources/arwed-mett.pub.asc"
+import pubKey from "./arwed-mett.pub.asc"
 
 library.add(faGithub)
 library.add(faLinkedin)

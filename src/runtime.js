@@ -6,7 +6,7 @@ import "intersection-observer"
 import React from "react"
 import ReactDOM from "react-dom"
 import App from "./app"
-import { ThemeProvider } from "styled-components"
+//import { ThemeProvider } from "styled-components"
 import { BrowserRouter, Route  } from "react-router-dom"
 
 

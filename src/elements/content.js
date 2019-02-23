@@ -1,7 +1,6 @@
 //@flow
 
 import React, { Component, Fragment } from "react"
-import type { Node } from "react"
 import { Section } from "."
 import type { SectionDescription } from "."
 import styled from "styled-components"
@@ -73,13 +72,13 @@ const generate_sections = (descriptions: Array<SectionDescription>) =>
 	descriptions.map(create_section)
 
 
-class Top extends Component<{ sections: Array<SectionDescription> }, { stuck: bool }> {
+class Top extends Component<{ sections: Array<SectionDescription> }, { stuck: boolean }> {
 
 	state = {
 		stuck: false
 	}
 
-	sentinel(in_view: bool) {
+	sentinel(in_view: boolean) {
 		this.setState({ stuck: !in_view })
 	}
 

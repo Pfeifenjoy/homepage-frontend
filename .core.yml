@@ -1,0 +1,34 @@
+kind: pipeline
+name: default
+
+steps:
+
+- name: install
+  image: node
+  commands:
+  - npm install
+
+- name: test
+  image: node
+  commands:
+  - npm test
+
+- name: build
+  image: node
+  commands:
+  - npm run build
+
+- name: publish
+  image: node
+  environment:
+    NPM_TOKEN:
+      from_secret: npm_token
+  commands:
+    - echo "//registry.npmjs.org/:_authToken=$${NPM_TOKEN}" >> .npmrc
+    - if [ "$(npm view @arwed/sanitize dist-tags.latest)" = "$(node -p -e "require('./package.json').version")" ]; then echo not publishing; else npm whoami & npm publish; fi
+  when:
+    branch:
+    - master
+    event:
+      exclude:
+      - pull_request
