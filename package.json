@@ -8,7 +8,7 @@
     ".flowconfig",
     "flow"
   ],
-  "repository": "git@github.de:Pfeifenjoy/homepage-frontend",
+  "repository": "ssh://git@gitea.metthub.de:3001/Pfeifenjoy/homepage-frontend.git",
   "directories": {
     "test": "test"
   },
