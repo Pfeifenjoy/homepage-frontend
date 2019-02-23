@@ -1,12 +1,14 @@
 //@flow
 
+import type { AsyncAction } from "./action"
+
 export type message_t = {
 	email: string;
 	name: string;
 	text: string;
 };
 
-export const send_message = (payload: message_t) => ({
+export const send_message = (payload: message_t): AsyncAction => ({
 	type: "SEND_MESSAGE",
 	payload: fetch("api/message/create", {
 		method: "POST",

@@ -3,52 +3,21 @@
 import React, { Component, Fragment } from "react"
 import { Section } from "."
 import type { SectionDescription } from "."
-import styled from "styled-components"
 import Observer from "react-intersection-observer"
 
-const Link = styled.a`
-	text-decoration: inherit;
-	color: white;
-	min-height: 40px;
-	display: flex;
-	align-items: center;
-	padding: 0 20px;
+const Link = (props: *) => <a className="section-link" { ...props } />
 
-	transition: 0.3s ease;
-	:hover {
-		background-color: #777;
-
-	}
-`
-
-const Header = styled.header.attrs({
-	backgroundcolor: props => props.theme.backgroundcolor || "#111111"
-})`
-	position: sticky;
-	top: 0;
-	display: flex;
-	justify-content: left;
-	align-items: center;
-	transition: 0.5s ease;
-	width: ${ props => props.stuck ? "100%" : "60%" };
-	z-index: 5;
-	margin: 20px auto;
-	min-height: 40px;
-	border-bottom: solid white;
-	background-color: ${ props => props.backgroundcolor };
-`
-
-/**
- * create a hash based on the section title
- */
-const get_hash = (section: SectionDescription, key: number) =>
-	key + "-" + section.title.toLocaleLowerCase().split(" ").join("-")
+const Navigation = ({ stuck, ...rest }: { stuck: boolean }) =>
+	<nav
+		className={ stuck ? "stuck" : "" }
+		{ ...rest }
+	/>
 
 /**
  * create a link to the section, according to the name and key.
  */
 const create_link = (section: SectionDescription, key: number) =>
-	<Link href={ "#" + get_hash(section, key) } key={ key }>{ section.title }</Link>
+	<Link href={ "#" + section.hash } key={ key }>{ section.title }</Link>
 
 /**
  * create a link for every section.
@@ -61,7 +30,7 @@ const generate_links = (sections: Array<SectionDescription>) => sections.map(cre
 const create_section = (description: SectionDescription, key: number) =>
 	<Section
 		description={ description }
-		hash={ get_hash(description, key) }
+		hash={ description.hash }
 		key={ key }
 	/>
 
@@ -71,11 +40,16 @@ const create_section = (description: SectionDescription, key: number) =>
 const generate_sections = (descriptions: Array<SectionDescription>) =>
 	descriptions.map(create_section)
 
+type TopProps = { sections: Array<SectionDescription> }
+type TopState = { stuck: boolean }
 
-class Top extends Component<{ sections: Array<SectionDescription> }, { stuck: boolean }> {
+class Top extends Component<TopProps, TopState> {
 
-	state = {
-		stuck: false
+	constructor(props: TopProps) {
+		super(props)
+		this.state = {
+			stuck: false
+		}
 	}
 
 	sentinel(in_view: boolean) {
@@ -88,9 +62,9 @@ class Top extends Component<{ sections: Array<SectionDescription> }, { stuck: bo
 		return <Fragment>
 			<Observer onChange={ this.sentinel.bind(this) }>
 			</Observer>
-			<Header stuck={ stuck }>
+			<Navigation stuck={ stuck }>
 				{ generate_links(sections) }
-			</Header>
+			</Navigation>
 		</Fragment>
 	}
 }

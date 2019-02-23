@@ -1,0 +1,32 @@
+input, textarea {
+	border: none;
+	border-bottom: #888 solid;
+	padding: 5px;
+	background-color: inherit;
+	outline: none;
+	transition: 0.3s ease;
+	color: white;
+	&:focus {
+		border-bottom: white solid;
+	}
+	&:invalid {
+		&.validate {
+			border-bottom: red solid;
+		}
+	}
+}
+
+.name {
+	grid-area: name;
+}
+
+.name {
+	grid-area: email;
+}
+
+.message {
+	grid-area: text;
+	grid-column-end: span 2;
+	resize: vertical;
+	box-sizing: border-box;
+}

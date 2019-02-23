@@ -1,7 +1,7 @@
 //@flow
 
-import util from "./util"
+import { describe } from "mocha"
 
 describe("homepage", () => {
-	util()
+	//TODO
 })

@@ -1,10 +1,6 @@
 //@flow
 
-import styled from "styled-components"
-import { Title } from "../text"
+import React from "react"
+import { Title } from ".."
 
-const Name = styled(Title)`
-	margin: 20px;
-`
-
-export default Name
+export default (props: *) => <Title className="name" { ...props } />

@@ -1,0 +1,29 @@
+form.contact {
+	display: grid;
+	width: 100%;
+
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr 1fr auto auto;
+	grid-template-areas:
+		"name"
+		"email"
+		"text"
+		"send";
+
+	grid-gap: 10px;
+
+	@media screen and (min-width: 500px) {
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr auto auto;
+		grid-template-areas:
+			"name email"
+			"text text"
+			"send send";
+	}
+
+	margin-top: 10px;
+	margin-bottom: 10px;
+	max-width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+}

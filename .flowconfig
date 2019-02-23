@@ -1,5 +1,6 @@
 [ignore]
 .*/build/.*
+.*/node_modules/styled-components/.*
 
 [include]
 
@@ -12,6 +13,7 @@ flow-typed
 module.use_strict=true
 suppress_type=$FlowIgnore
 module.name_mapper.extension='html' -> '<PROJECT_ROOT>/flow/stub/file-loader.js'
+module.name_mapper.extension='less' -> '<PROJECT_ROOT>/flow/stub/file-loader.js'
 module.name_mapper.extension='asc' -> '<PROJECT_ROOT>/flow/stub/file-loader.js'
 module.name_mapper.extension='ejs' -> '<PROJECT_ROOT>/flow/stub/raw-loader.js'
 

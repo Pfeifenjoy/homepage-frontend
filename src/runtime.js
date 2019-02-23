@@ -1,22 +1,18 @@
 //@flow
 import "./index.html"
-import "babel-polyfill"
-import "intersection-observer"
+import "./style/index.less"
+import "@babel/polyfill"
 
 import React from "react"
 import ReactDOM from "react-dom"
 import App from "./app"
-//import { ThemeProvider } from "styled-components"
-import { BrowserRouter, Route  } from "react-router-dom"
-
-
-const routes = <BrowserRouter>
-	<Route exact component={ App } />
-</BrowserRouter>
+import createStore from "./store/index.js"
+import { Provider } from "react-redux"
 
 const target = document.getElementById("content")
-if(target instanceof Element) {
-	ReactDOM.render(routes, target)
+
+if(target) {
+	ReactDOM.render(<Provider store={ createStore() }><App /></Provider>, target)
 } else {
 	throw "Could not find content element to render content."
 }
