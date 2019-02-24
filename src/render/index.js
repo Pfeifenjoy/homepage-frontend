@@ -1,7 +1,7 @@
 //@flow
 
 import React from "react"
-import type { StaticAction } from "../action"
+import type { Action } from "../action"
 import createStore from "../store"
 import { renderToString } from "react-dom/server"
 import { Provider } from "react-redux"
@@ -14,7 +14,7 @@ import style from "../style"
 export const template = ejs.compile(index_file)
 export const title = "Arwed Mett"
 
-export default (actions: Array<StaticAction<*>>) => {
+export default (actions: Array<Action>) => {
 	const store = createStore(actions)
 
 	const content = renderToString(

@@ -1,4 +1,4 @@
 //@flow
 
 export { send_message } from "./message"
-export type * from "./action"
+export type { Action } from "./message"

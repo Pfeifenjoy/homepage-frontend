@@ -1,20 +1,13 @@
 //@flow
 
-type state_t = {
-	state: "IDLE" | "PENDING" | "FULFILLED" | "FAIL"
+import type { Action } from "../action/message"
+import type { Reducer } from "redux"
+
+export type State = {
+	state: "IDLE" | "PENDING" | "FULFILLED" | "REJECTED"
 }
 
-type action_t = {
-	type: "SEND_MESSAGE_PENDING"
-} | {
-	type: "SEND_MESSAGE_FULFILLED",
-	payload: Response
-} | {
-	type: "SEND_MESSAGE_REJECTED",
-	payload: Error
-}
-
-export default (_: state_t, action: action_t) => {
+const message: Reducer<State, Action> = (_, action: Action): State => {
 	switch(action.type) {
 	case "SEND_MESSAGE_PENDING":
 		return { state: "PENDING" }
@@ -30,3 +23,5 @@ export default (_: state_t, action: action_t) => {
 		return { state: "IDLE" }
 	}
 }
+
+export default message
