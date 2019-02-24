@@ -20,6 +20,11 @@
 		"plugin:react/recommended",
 		"plugin:flowtype/recommended"
 	],
+	"settings": {
+		"react": {
+			"version": "detect"
+		}
+	},
 	"rules": {
 		"quotes": ["error", "double"],
 		"curly": ["error", "all"],
